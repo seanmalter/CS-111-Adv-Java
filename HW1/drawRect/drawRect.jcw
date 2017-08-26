@@ -1,0 +1,25 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>drawRect</label>
+	</settings>
+	<users>
+		<user>
+			<path>drawRect.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>..\flower\flower.jcp</path>
+		</project>
+		<project>
+			<path>..\cresantMoon\cresantMoon.jcp</path>
+		</project>
+		<project>
+			<path>Bulls-Eye\Bulls-Eye.jcp</path>
+		</project>
+		<project>
+			<path>drawRect.jcp</path>
+		</project>
+	</projects>
+</workspace>

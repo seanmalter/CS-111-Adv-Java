@@ -1,0 +1,25 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>cresantMoon</label>
+	</settings>
+	<users>
+		<user>
+			<path>cresantMoon.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>..\loopDrawing\loopDrawing.jcp</path>
+		</project>
+		<project>
+			<path>..\person\person.jcp</path>
+		</project>
+		<project>
+			<path>..\flower\flower.jcp</path>
+		</project>
+		<project>
+			<path>cresantMoon.jcp</path>
+		</project>
+	</projects>
+</workspace>
