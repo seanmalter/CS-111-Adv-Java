@@ -1,0 +1,16 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>cresantMoon</label>
+	</settings>
+	<users>
+		<user>
+			<path>cresantMoon2.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>cresantMoon.jcp</path>
+		</project>
+	</projects>
+</workspace>

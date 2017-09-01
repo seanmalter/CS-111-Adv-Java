@@ -3,8 +3,8 @@
 	<settings>
 		<label>person</label>
 		<root_path>\</root_path>
-		<output_path>classes\</output_path>
-		<source_path>src\</source_path>
+		<output_path>C:\Users\Malter\Documents\Java-2-CS-111\HW1\person\classes\</output_path>
+		<source_path>C:\Users\Malter\Documents\Java-2-CS-111\HW1\person\src\</source_path>
 		<jdkprofile_ref/>
 		<compiler_ref/>
 		<ant_ref/>

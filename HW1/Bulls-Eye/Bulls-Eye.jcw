@@ -1,0 +1,16 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>Bulls-Eye</label>
+	</settings>
+	<users>
+		<user>
+			<path>Bulls-Eye.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>Bulls-Eye.jcp</path>
+		</project>
+	</projects>
+</workspace>
