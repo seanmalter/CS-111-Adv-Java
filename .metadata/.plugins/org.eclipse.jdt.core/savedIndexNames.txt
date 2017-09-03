@@ -1,0 +1,1 @@
+INDEX VERSION 1.130+C:\Users\seanm\Documents\Java-2-CS-111\.metadata\.plugins\org.eclipse.jdt.core
