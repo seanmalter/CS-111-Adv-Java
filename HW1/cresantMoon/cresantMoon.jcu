@@ -1,62 +1,29 @@
 <?xml?>
 <workspace_user>
-	<active_project>
-		<label>loopDrawing</label>
-	</active_project>
-	<projects>
-		<project>
-			<label>loopDrawing</label>
-			<showfiles>false</showfiles>
-			<folderitem>
-				<path>..\loopDrawing\classes</path>
-			</folderitem>
-			<folderitem>
-				<path>..\loopDrawing\src</path>
-			</folderitem>
-		</project>
-		<project>
-			<label>person</label>
-			<showfiles>false</showfiles>
-			<folderitem>
-				<path>..\person\classes</path>
-			</folderitem>
-			<folderitem>
-				<path>..\person\src</path>
-			</folderitem>
-		</project>
-		<project>
-			<label>flower</label>
-			<showfiles>false</showfiles>
-			<folderitem>
-				<path>..\flower\classes</path>
-			</folderitem>
-			<folderitem>
-				<path>..\flower\src</path>
-			</folderitem>
-		</project>
-		<project>
-			<label>cresantMoon</label>
-			<showfiles>false</showfiles>
-			<folderitem>
-				<path>classes</path>
-			</folderitem>
-			<folderitem>
-				<path>src</path>
-			</folderitem>
-		</project>
-	</projects>
 	<open_files>
 		<docitem>
 			<path>..\loopDrawing\src\LoopDrawing.java</path>
 			<source>true</source>
 			<index>0</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
 			<path>..\flower\src\Flower.java</path>
 			<source>true</source>
 			<index>1</index>
 			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>..\..\HW2\Ch 8 Project 3\Movie.java</path>
+			<source>true</source>
+			<index>2</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>..\..\HW2\Ch 8 Project 3\Rental.java</path>
+			<source>true</source>
+			<index>3</index>
+			<active>true</active>
 		</docitem>
 	</open_files>
 </workspace_user>
