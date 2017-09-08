@@ -15,6 +15,11 @@ public class BugMap
   {
     return map[row][column];
   }
+
+  public Organism[][] getMap()
+  {
+    return map;
+  }
   //get neighbors, key maps to what spaces are available
   public HashMap<String, Organism> getNeighbors(int row, int column)
   {
@@ -48,4 +53,49 @@ public class BugMap
   {
     map[row][column] = bug;
   }
+
+  public void removeBug(int row, int column)
+  {
+    map[row][column] = null;
+  }
+
+  public void breed(Organism bug)
+  {
+  	//first get the hashmap of nearby neighbors
+    HashMap<String, Organism> neighbors = bug.getNeighbors(bug.getRow(), bug.getColumn());
+
+    neighbors.forEach((position, neighbor) ->
+    if(!neighbor instanceof Organism)
+    {
+      switch(position)
+      {
+        case "Top":
+          return;
+        case "Left":
+        case "Right":
+        case "Bottom":
+      }
+    })
+  }
+
+  //print map
+  public void printMap()
+ {
+ 	for(int i = 0; i < 20; i++)
+ 	{
+ 		String line = "";
+ 		for(int j = 0; j < 20; j++)
+ 		{
+ 			if(map[i][j] == null)
+ 			{
+ 				line += "-";
+ 			}
+ 			else if(map[i][j] instanceof Organism)
+ 			{
+ 				line += "X";
+ 			}
+ 		}
+ 		System.out.println(line);
+ 	}
+ }
 }

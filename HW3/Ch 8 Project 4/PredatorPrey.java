@@ -33,7 +33,8 @@ class PredatorPrey
     //map = bug1.breed(map);
 
     BugMap map1 = new BugMap();
-    System.out.println(map1.getNeighbors(0,0));
+    map1.getNeighbors(1,0).values().forEach(space -> System.out.println(space));
+    map1.printMap();
 
     //System.out.println(map1.getSpace(1,1));
     //System.out.println(map1.getSpace(0,1));
