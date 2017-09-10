@@ -26,17 +26,23 @@ class PredatorPrey
 {
   public static void main(String[] args)
   {
-    Organism bug1 = new Organism(1,1);
-    //Organism bug2 = new Organism(6,6);
-
-
-    //map = bug1.breed(map);
-
+  	Doodlebug bug1 = new Doodlebug(1,1);
     BugMap map1 = new BugMap();
-    map1.getNeighbors(1,0).values().forEach(space -> System.out.println(space));
     map1.printMap();
+    map1.breed(bug1);
+    map1.breed(bug1);
+    
+    map1.printMap();
+    // map1.printMap();
+	  // System.out.println("here");
+    // map1.breed(bug1);
+    // map1.printMap();
+    // map1.moveBug(bug1);
+    // map1.printMap();
+    //Doodlebug ant1 = new Doodlebug(1,1);
+    //ant1.incrementStarveCount();
+    //System.out.println(ant1.getStarveCount());
+    //map1.start();
 
-    //System.out.println(map1.getSpace(1,1));
-    //System.out.println(map1.getSpace(0,1));
   }
 }

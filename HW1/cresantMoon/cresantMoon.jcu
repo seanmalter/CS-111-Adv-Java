@@ -2,28 +2,34 @@
 <workspace_user>
 	<open_files>
 		<docitem>
-			<path>..\loopDrawing\src\LoopDrawing.java</path>
+			<path>..\..\HW3\Ch 8 Project 4\Ant.java</path>
 			<source>true</source>
 			<index>0</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>..\flower\src\Flower.java</path>
+			<path>..\..\HW3\Ch 8 Project 4\BugMap.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
-			<path>..\..\HW2\Ch 8 Project 3\Movie.java</path>
+			<path>..\..\HW3\Ch 8 Project 4\Doodle.java</path>
 			<source>true</source>
 			<index>2</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>..\..\HW2\Ch 8 Project 3\Rental.java</path>
+			<path>..\..\HW3\Ch 8 Project 4\Organism.java</path>
 			<source>true</source>
 			<index>3</index>
-			<active>true</active>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>..\..\HW3\Ch 8 Project 4\PredatorPrey.java</path>
+			<source>true</source>
+			<index>4</index>
+			<active>false</active>
 		</docitem>
 	</open_files>
 </workspace_user>

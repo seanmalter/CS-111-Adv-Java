@@ -1,4 +1,9 @@
+import java.util.Map;
 import java.util.HashMap;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class BugMap
 {
@@ -7,7 +12,9 @@ public class BugMap
   {
     System.out.println("created a new map");
     map = new Organism[20][20];
-    map[1][1] = new Organism(1,1);
+    map[1][1] = new Doodlebug(1,1);
+    map [2][2] = new Ant(2,2);
+    breed(map[2][2]);
   }
 
   //accessors
@@ -28,7 +35,7 @@ public class BugMap
     //check if top is inside the map
     if(row - 1 >= 0)
     {
-      neighbors.put("top", map[row - 1][column]);
+      neighbors.put("up", map[row - 1][column]);
     }
     //check left
     if(column - 1 >= 0)
@@ -43,7 +50,7 @@ public class BugMap
     //check bottom
     if(row + 1 < 20)
     {
-      neighbors.put("bottom", map[row + 1][column]);
+      neighbors.put("down", map[row + 1][column]);
     }
     return neighbors;
   }
@@ -61,21 +68,29 @@ public class BugMap
 
   public void breed(Organism bug)
   {
-  	//first get the hashmap of nearby neighbors
-    HashMap<String, Organism> neighbors = bug.getNeighbors(bug.getRow(), bug.getColumn());
+    System.out.println(map[bug.getRow()][bug.getColumn()]);
 
-    neighbors.forEach((position, neighbor) ->
-    if(!neighbor instanceof Organism)
+  	//first get the hashmap of nearby neighbors
+    HashMap<String, Organism> neighbors = getNeighbors(bug.getRow(), bug.getColumn());
+
+    for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
+    String key = entry.getKey();
+    Organism value = entry.getValue();
+    System.out.println("key " + key + " value " + value);
+
+    if(value == null)
     {
-      switch(position)
-      {
-        case "Top":
-          return;
-        case "Left":
-        case "Right":
-        case "Bottom":
-      }
-    })
+      int[] change = new int[2];
+      change = convertString(key);
+      int row = bug.getRow() + change[0];
+      int column = bug.getColumn() + change[1];
+      System.out.println("adding bug to " + row + " " + column);
+      map[row][column] = bug.clone(row, column);
+      System.out.println(map[bug.getRow()][bug.getColumn()]);
+
+      return;
+    }
+  }
   }
 
   //print map
@@ -90,12 +105,91 @@ public class BugMap
  			{
  				line += "-";
  			}
- 			else if(map[i][j] instanceof Organism)
+ 			else if(map[i][j] instanceof Doodlebug)
  			{
  				line += "X";
  			}
- 		}
+  		else if(map[i][j] instanceof Ant)
+  		{
+    		line += "o";
+  		}
+    }
  		System.out.println(line);
- 	}
+  }
  }
+
+ //convert from String (up down left right) to int array ([-1,0] [1,0]...)
+ public int[] convertString(String movement)
+ {
+   int[] change = new int[2];
+   //default change
+   change[0] = 0;
+   change[1] = 0;
+
+   switch(movement)
+   {
+     case "up":
+      change[0] = -1;
+      break;
+     case "down":
+      change[0] = 1;
+      break;
+     case "left":
+      change[1] = -1;
+      break;
+     case "right":
+      change[1] = 1;
+      break;
+   }
+   return change;
+ }
+
+ public void moveBug(Organism bug)
+ {
+   HashMap<String, Organism> neighbors = getNeighbors(bug.getRow(), bug.getColumn());
+   String move = bug.move(neighbors);
+   System.out.println(move);
+   int[] change = new int[2];
+   change = convertString(move);
+   int row = bug.getRow() + change[0];
+   int column = bug.getColumn() + change[1];
+   if(move == "")
+   {
+     return;
+   }
+   else
+   {
+     //the bug can move to new space, lets set the row and column
+     bug.setRow(row);
+     bug.setColumn(column);
+     removeBug(bug.getRow(), bug.getColumn());
+     setSpace(row, column, bug);
+   }
+  }
+
+  public void start()
+  {
+    List<Doodlebug> doodlebugs = new ArrayList<Doodlebug>();
+    List<Ant> ants = new ArrayList<Ant>();
+    for(int i = 0; i < 20; i++)
+    {
+      for(int j = 0; j < 20; j++)
+      {
+        Object currentSpace = map[i][j];
+        if(currentSpace instanceof Doodlebug)
+        {
+          doodlebugs.add((Doodlebug) currentSpace);
+        }
+        else if(currentSpace instanceof Ant)
+        {
+          ants.add((Ant) currentSpace);
+        }
+      }
+    }
+    for(Doodlebug doodlebug : doodlebugs)
+    {
+      System.out.println(doodlebug);
+    }
+
+  }
 }
