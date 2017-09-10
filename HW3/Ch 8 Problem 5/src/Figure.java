@@ -24,9 +24,11 @@
 public abstract class Figure {
 	 
 	 public static void main(String[] args) {
-		 Rectangle rect = new Rectangle();
+		 Rectangle rect = new Rectangle(3,3);
 		 rect.center();
-		 System.out.println(rect);
+		 
+		 Triangle tri = new Triangle(3);
+		 tri.center();
 	 }
 	 
 	 private String[][] drawing = new String[10][10];

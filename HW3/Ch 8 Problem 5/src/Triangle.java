@@ -1,11 +1,10 @@
 
 public class Triangle extends Figure
 {
-	int width, height;
-	Triangle(int width, int height)
+	int sidelenght;
+	Triangle(int sidelenght)
 	{
-		this width = width;
-		this.height = height;
+		this.sidelenght = sidelenght;
 	}
 	
 	@Override
