@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class BugMap
@@ -12,9 +13,32 @@ public class BugMap
   {
     System.out.println("created a new map");
     map = new Organism[20][20];
-    map[1][1] = new Doodlebug(1,1);
-    map [2][2] = new Ant(2,2);
-    breed(map[2][2]);
+
+    int doodlebugCount = 0;
+    int antCount = 0;
+    Random r = new Random();
+
+    while(doodlebugCount < 5)
+    {
+      int row = r.nextInt(20);
+      int column = r.nextInt(20);
+      if(map[row][column] == null)
+      {
+        map[row][column] = new Doodlebug(row, column);
+        doodlebugCount++;
+      }
+    }
+
+    while(antCount < 100)
+    {
+      int row = r.nextInt(20);
+      int column = r.nextInt(20);
+      if(map[row][column] == null)
+      {
+        map[row][column] = new Ant(row, column);
+        antCount++;
+      }
+    }
   }
 
   //accessors
@@ -61,22 +85,19 @@ public class BugMap
     map[row][column] = bug;
   }
 
-  public void removeBug(int row, int column)
+  public void removeBug(Organism bug)
   {
-    map[row][column] = null;
+    map[bug.getRow()][bug.getColumn()] = null;
   }
 
   public void breed(Organism bug)
   {
-    System.out.println(map[bug.getRow()][bug.getColumn()]);
-
   	//first get the hashmap of nearby neighbors
     HashMap<String, Organism> neighbors = getNeighbors(bug.getRow(), bug.getColumn());
 
     for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
     String key = entry.getKey();
     Organism value = entry.getValue();
-    System.out.println("key " + key + " value " + value);
 
     if(value == null)
     {
@@ -91,6 +112,31 @@ public class BugMap
       return;
     }
   }
+  }
+
+  public boolean it_ate(Doodlebug doodlebug)
+  {
+    String direction = "";
+    Boolean he_ate = false;
+    //first get the hashmap of nearby neighbors
+    HashMap<String, Organism> neighbors = getNeighbors(doodlebug.getRow(), doodlebug.getColumn());
+
+    for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
+      String key = entry.getKey();
+      Organism value = entry.getValue();
+      if(value instanceof Ant)
+      {
+        direction = key;
+        he_ate = true;
+        break;
+      }
+    }
+    int[] move = convertString(direction);
+    int row = doodlebug.getRow() + move[0];
+    int column = doodlebug.getColumn() + move[1];
+    removeBug(doodlebug);
+    setSpace(row, column, doodlebug);
+    return he_ate;
   }
 
   //print map
@@ -148,7 +194,6 @@ public class BugMap
  {
    HashMap<String, Organism> neighbors = getNeighbors(bug.getRow(), bug.getColumn());
    String move = bug.move(neighbors);
-   System.out.println(move);
    int[] change = new int[2];
    change = convertString(move);
    int row = bug.getRow() + change[0];
@@ -160,9 +205,9 @@ public class BugMap
    else
    {
      //the bug can move to new space, lets set the row and column
+     removeBug(bug);
      bug.setRow(row);
      bug.setColumn(column);
-     removeBug(bug.getRow(), bug.getColumn());
      setSpace(row, column, bug);
    }
   }
@@ -188,8 +233,45 @@ public class BugMap
     }
     for(Doodlebug doodlebug : doodlebugs)
     {
-      System.out.println(doodlebug);
-    }
+      if(doodlebug.getStarveCount() >= 3)
+      {
+        removeBug(doodlebug);
+        continue;
+      }
+      else if(it_ate(doodlebug))
+      {
+        doodlebug.ateAnt();
+      }
+      else
+      {
+        moveBug(doodlebug);
+        doodlebug.incrementStarveCount();
+      }
 
+      if(doodlebug.getBreedCount() >= 8)
+      {
+        breed(doodlebug);
+      }
+      doodlebug.incrementBreedCount();
+    }
+    for(Ant ant : ants)
+    {
+    	//check if ant got eaten
+    	if(map[ant.getRow()][ant.getColumn()] == null)
+    	{
+    		continue;
+    	}
+    	else
+    	{
+    		moveBug(ant);
+    		if(ant.getBreedCount() >= 3)
+    		{
+    			breed(ant);
+    		}
+    		ant.incrementBreedCount();
+    	}
+    }
+    printMap();
+    System.out.println();
   }
 }

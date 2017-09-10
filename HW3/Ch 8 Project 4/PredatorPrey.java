@@ -20,7 +20,7 @@
    Doodle - specific functions for the doodle bug
 */
 
-import java.util.Random;
+import java.util.Scanner;
 
 class PredatorPrey
 {
@@ -28,21 +28,12 @@ class PredatorPrey
   {
   	Doodlebug bug1 = new Doodlebug(1,1);
     BugMap map1 = new BugMap();
-    map1.printMap();
-    map1.breed(bug1);
-    map1.breed(bug1);
-    
-    map1.printMap();
-    // map1.printMap();
-	  // System.out.println("here");
-    // map1.breed(bug1);
-    // map1.printMap();
-    // map1.moveBug(bug1);
-    // map1.printMap();
-    //Doodlebug ant1 = new Doodlebug(1,1);
-    //ant1.incrementStarveCount();
-    //System.out.println(ant1.getStarveCount());
-    //map1.start();
-
+    int x = 0;
+    while(x == 0)
+    {
+      map1.start();
+      System.out.println("press enter to continue");
+      new Scanner(System.in).nextLine();
+    }
   }
 }

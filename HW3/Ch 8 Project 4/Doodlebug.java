@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Doodlebug extends Organism
 {
   private int starve_count = 0;
@@ -29,10 +32,28 @@ public class Doodlebug extends Organism
   {
   	this.starve_count = 0;
   }
-  
+
   @Override
   public Doodlebug clone(int row, int column)
   {
     return new Doodlebug(row, column);
+  }
+
+  @Override
+  public String move(HashMap<String, Organism> neighbors)
+  {
+    Boolean he_ate = false;
+    //first get the hashmap of nearby neighbors
+
+    for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
+      String key = entry.getKey();
+      Organism value = entry.getValue();
+      if(value instanceof Ant)
+      {
+        he_ate = true;
+        return key;
+      }
+    }
+    return "";
   }
 }
