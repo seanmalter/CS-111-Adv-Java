@@ -8,9 +8,4 @@
 			<path>person.jcu</path>
 		</user>
 	</users>
-	<projects>
-		<project>
-			<path>person.jcp</path>
-		</project>
-	</projects>
 </workspace>
