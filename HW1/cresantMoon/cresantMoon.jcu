@@ -2,28 +2,22 @@
 <workspace_user>
 	<open_files>
 		<docitem>
-			<path>..\loopDrawing\src\LoopDrawing.java</path>
+			<path>..\..\Ch 8 Problem 5\src\Figure.java</path>
 			<source>true</source>
 			<index>0</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
-			<path>..\flower\src\Flower.java</path>
+			<path>..\..\Ch 8 Problem 5\src\Rectangle.java</path>
 			<source>true</source>
 			<index>1</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>..\..\HW2\Ch 8 Project 3\Movie.java</path>
+			<path>..\..\Ch 8 Problem 5\src\Triangle.java</path>
 			<source>true</source>
 			<index>2</index>
 			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\HW2\Ch 8 Project 3\Rental.java</path>
-			<source>true</source>
-			<index>3</index>
-			<active>true</active>
 		</docitem>
 	</open_files>
 </workspace_user>

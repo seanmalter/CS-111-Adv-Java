@@ -20,22 +20,20 @@
    Doodle - specific functions for the doodle bug
 */
 
-import java.util.Random;
+import java.util.Scanner;
 
 class PredatorPrey
 {
   public static void main(String[] args)
   {
-    Organism bug1 = new Organism(1,1);
-    //Organism bug2 = new Organism(6,6);
-
-
-    //map = bug1.breed(map);
-
+  	Doodlebug bug1 = new Doodlebug(1,1);
     BugMap map1 = new BugMap();
-    System.out.println(map1.getNeighbors(0,0));
-
-    //System.out.println(map1.getSpace(1,1));
-    //System.out.println(map1.getSpace(0,1));
+    int x = 0;
+    while(x == 0)
+    {
+      map1.start();
+      System.out.println("press enter to continue");
+      new Scanner(System.in).nextLine();
+    }
   }
 }
