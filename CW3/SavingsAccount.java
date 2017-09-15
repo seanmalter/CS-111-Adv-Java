@@ -1,3 +1,13 @@
+/*
+ Algorithm
+Create CoinName and CoinValue Exception classes
+Create SavingsAccount class to store all the coins entered into the system
+create a method to add coin values to list
+create a method to add coin names to list
+create a method to print out the total value and coins in the bag
+create a main method to run the methods
+*/
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.util.Arrays;
@@ -5,9 +15,10 @@ import java.util.ArrayList;
 
 public class SavingsAccount
 {
-	private int MAX_COINS = 20;
 	private ArrayList<Integer> coins = new ArrayList<Integer>();
 	private ArrayList<String> names = new ArrayList<String>();
+	private int currentCoinValue;
+	private String currentCoinName;
 		
 	public static void main(String[] args)
 	{
@@ -29,7 +40,7 @@ public class SavingsAccount
 		if(tries >= 2)
 		{
 			System.out.println("too many failed attempts, System exit");
-			System.exit(0);
+			getTotal();
 		}
 		
 		try
@@ -50,6 +61,7 @@ public class SavingsAccount
 			else
 			{
 				coins.add(input);
+				currentCoinValue = input;
 			}
 		}
 		catch(InputMismatchException e)
@@ -69,17 +81,36 @@ public class SavingsAccount
 		if(tries >= 2)
 		{
 			System.out.println("too many failed attempts, System exit");
-			System.exit(0);
+			getTotal();
 		}
 		
 		try
 		{
-			System.out.println("enter the name of the coin, ie penny, nickel, dime");
+			System.out.println("enter the name of the coin, ie penny, nickel, dime, quarter");
 			Scanner inputofUser = new Scanner(System.in);
 			String input = inputofUser.next();
-			//checks to see if coin name is valid ie. in coinNames list
-			String[] coinNames = {"penny", "nickel", "dime", "quarter"};
-			if(Arrays.asList(coinNames).indexOf(input)== -1)
+			//checks to see if coin name matches the value
+			switch(currentCoinValue)
+			{
+				case 1:
+					currentCoinName = "penny";
+					break;
+				case 5:
+					currentCoinName = "nickel";
+					break;
+				case 10:
+					currentCoinName = "dime";
+					break;
+				case 25:
+					currentCoinName = "quarter";
+					break;
+					
+			}
+			
+			System.out.println(currentCoinName);
+			System.out.println(input);
+			
+			if(currentCoinName.equals(input))
 			{
 				//thow coinName exception
 				throw new CoinName();
