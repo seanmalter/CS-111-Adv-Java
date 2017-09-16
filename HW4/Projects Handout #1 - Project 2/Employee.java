@@ -30,11 +30,11 @@ public class Employee
       System.out.println("Enter employee's SSN");
       newEmployee.setSSN();
 
-      newEmployee.employeeInfo(200);
-
       //add new employee to employees array
       employees[i] = newEmployee;
     }
+
+    //TODO: get employees average salary and print all employees information
   }
 
   private String name, title, SSN;
