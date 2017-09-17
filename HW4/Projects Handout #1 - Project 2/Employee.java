@@ -6,6 +6,8 @@ public class Employee
   {
     int MAX_EMPLOYEES = 100;
     Scanner s = new Scanner(System.in);
+    double totalSalary = 0;
+    int numEmployees = 0;
 
     Employee[] employees = new Employee[MAX_EMPLOYEES];
     for(int i=0; i < employees.length; i++)
@@ -25,16 +27,29 @@ public class Employee
       System.out.println("Enter employee's title");
       newEmployee.setTitle(s.nextLine());
       System.out.println("Enter employee's salary");
-      newEmployee.setSalary(s.nextDouble());
+      double salary = s.nextDouble();
+      totalSalary += salary;
+      newEmployee.setSalary(salary);
       s.nextLine(); //hack to not skip the SSN
       System.out.println("Enter employee's SSN");
       newEmployee.setSSN();
 
+      numEmployees++;
       //add new employee to employees array
       employees[i] = newEmployee;
     }
 
-    //TODO: get employees average salary and print all employees information
+    double average = totalSalary / numEmployees;
+    System.out.println("average salary = " + average);
+
+    for(Employee employee : employees)
+    {
+    	if(employee == null)
+    	{
+    		continue;
+    	}
+      employee.employeeInfo(average);
+    }
   }
 
   private String name, title, SSN;
