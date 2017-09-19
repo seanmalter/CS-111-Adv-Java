@@ -106,11 +106,8 @@ public class SavingsAccount
 					break;
 					
 			}
-			
-			System.out.println(currentCoinName);
-			System.out.println(input);
-			
-			if(currentCoinName.equals(input))
+						
+			if(!currentCoinName.equals(input))
 			{
 				//thow coinName exception
 				throw new CoinName();
