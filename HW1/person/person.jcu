@@ -2,34 +2,22 @@
 <workspace_user>
 	<open_files>
 		<docitem>
-			<path>..\..\HW3\Ch 8 Project 4\Ant.java</path>
+			<path>..\..\CW3\CoinName.java</path>
 			<source>true</source>
 			<index>0</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>..\..\HW3\Ch 8 Project 4\BugMap.java</path>
+			<path>..\..\CW3\CoinValue.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>..\..\HW3\Ch 8 Project 4\Doodle.java</path>
+			<path>..\..\CW3\SavingsAccount.java</path>
 			<source>true</source>
 			<index>2</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\HW3\Ch 8 Project 4\Organism.java</path>
-			<source>true</source>
-			<index>3</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\HW3\Ch 8 Project 4\PredatorPrey.java</path>
-			<source>true</source>
-			<index>4</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 	</open_files>
 </workspace_user>
