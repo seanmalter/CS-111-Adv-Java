@@ -73,6 +73,8 @@ public class SavingsAccount
 		catch(CoinValue e)
 		{
 			System.out.printf(e.getMessage() + "%n%n");
+			//recursively add tries
+			addCoinValue(++tries);
 		}
 	}
 	
