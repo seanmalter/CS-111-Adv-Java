@@ -21,10 +21,10 @@ public class Loan implements Serializable
 
     Loan[] loans = new Loan[5];
     //create the first 3 Loans in the array
-    for(int i=0; i < 3; i++)
+    for(int i=0; i < 5; i++)
     {
       //PROMPT FOR LOAN 1 VALUES
-      System.out.println("GATHERING DETAILS FOR LOAN 1:");
+      System.out.printf("GATHERING DETAILS FOR LOAN %d:%n", i);
       System.out.print("Enter specified interest rate for this loan: ");
       interestRate = keyboard.nextDouble();
       System.out.print("Enter # of years for this loan: ");
@@ -49,20 +49,6 @@ public class Loan implements Serializable
       System.out.println(e.getMessage());
     }
 
-        //create the first 3 Loans in the array
-    for(int i=3; i < 5; i++)
-    {
-      //PROMPT FOR LOAN 1 VALUES
-      System.out.println("GATHERING DETAILS FOR LOAN 1:");
-      System.out.print("Enter specified interest rate for this loan: ");
-      interestRate = keyboard.nextDouble();
-      System.out.print("Enter # of years for this loan: ");
-      numberOfYears = keyboard.nextInt();
-      System.out.print("Enter loan amount for this loan: ");
-      loanAmount = keyboard.nextDouble();
-
-      loans[i] = new Loan(interestRate,numberOfYears,loanAmount);
-    }
     try
     {
       AppendObjectOutputStream appendOutputFile = new AppendObjectOutputStream( new FileOutputStream("loans.dat", true));
@@ -208,7 +194,7 @@ public class Loan implements Serializable
 
   public void calcMonthlyPayment()
   {
-    double monthlyInterestRate = annualInterestRate / 12;
+    double monthlyInterestRate = annualInterestRate / 1200;
 	  monthlyPayment = loanAmount * monthlyInterestRate /( 1 - (Math.pow(1 / (1 + monthlyInterestRate), numberOfYears * 12)));
   }
 

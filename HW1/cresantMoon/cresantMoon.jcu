@@ -2,21 +2,9 @@
 <workspace_user>
 	<open_files>
 		<docitem>
-			<path>..\..\HW7\Chapter 11 Project 2\Handshakes.java</path>
+			<path>..\..\HW8\Project 8\QuickSort.java</path>
 			<source>true</source>
 			<index>0</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\HW7\Chapter 11 Project Handout 3 Project 1\Factorial.java</path>
-			<source>true</source>
-			<index>1</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\HW7\Chapter 11 Project Handout 3 Project 2\Palindrone.java</path>
-			<source>true</source>
-			<index>2</index>
 			<active>true</active>
 		</docitem>
 	</open_files>
