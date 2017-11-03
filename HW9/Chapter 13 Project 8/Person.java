@@ -16,6 +16,7 @@ public class Person implements Cloneable
     Person p2 = p1.clonePerson();
 
     System.out.println(p2);
+    System.out.println("he was born on " + p2.getBirthDate());
   }
     private String name;
     private Date born;
