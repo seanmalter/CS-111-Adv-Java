@@ -4,84 +4,56 @@ import java.util.Map;
 
 public abstract class Organism
 {
-  private int breed_count, column, row;
+  //breed count keeps track of when the bug breeds
+  // hasMoved keeps track of if the bug has moved this turn
+  private int breed_count;
+  private Boolean hasMoved = false;
 
-  //constructors
-  Organism(int x, int y)
+  //default constructor
+  Organism()
   {
-    this.column = x;
-    this.row = y;
     this.breed_count = 0;
   }
 
-  Organism(Organism bug)
-  {
-    this.column = bug.getColumn();
-    this.row = bug.getRow();
-    this.breed_count = 0;
-  }
-
-//accessors
-  public int getRow()
-  {
-    return row;
-  }
-
-  public int getColumn()
-  {
-    return column;
-  }
-
+  //accessors
+  //returns the current breed count
   public int getBreedCount()
   {
     return breed_count;
   }
 
+  //gets the has moved boolean to see if a bug has moved this turn
+  public Boolean getHasMoved()
+  {
+    return hasMoved;
+  }
+
 //mutators
-  public void setRow(int x)
-  {
-    this.column = x;
-  }
-
-  public void setColumn(int y)
-  {
-    this.row = y;
-  }
-
+  //increments breed count by 1
   public void incrementBreedCount()
   {
     this.breed_count++;
   }
 
+  //sets the hasMoved to true after the bug has moved
+  public void moved()
+  {
+    this.hasMoved = true;
+  }
+
+  //sets hasMoved to false to reset for the next turn
+  public void resetMoved()
+  {
+    this.hasMoved = false;
+  }
+
+  //sets the breed count to zero after the bug breeds
   public void resetBreedCount()
   {
   	this.breed_count = 0;
   }
 
-  //clone
-  public abstract Organism clone(int row, int column);
+  //clone for the organism must be implemented on all child classes
+  public abstract Organism clone();
 
-  //move (like an ant)
-  public String move(HashMap<String, Organism> neighbors)
-  {
-    Random r = new Random();
-    int rng = r.nextInt(4);
-    int count = 0;
-
-    //map the values to values array, and the strings to keys
-    //if count == rng then the ant tries to move there
-    for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
-      if(count == rng)
-      {
-        String key = entry.getKey();
-        Organism value = entry.getValue();
-        if(value == null)
-        {
-          return key;
-        }
-      }
-      count++;
-    }
-    return "";
-  }
 }

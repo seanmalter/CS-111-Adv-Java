@@ -1,39 +1,63 @@
-/* Chapter No. 8 - Exercise No. 4
-   File Name: predator-prey-driver
-   Programmer: Sean Malter
-   Date Last Modified: Septermber 6, 2017
-
-   Problem Statement: I want the code to model the predator prey simulation
-   and when the user presses enter, another step happens.
-
-   Overall Plan (Algorithm - step-by-step plan to make it happen):
-   1. set up the oganism class to handle the method set up and constructors
-   2. set up the ant class
-   3. set up the doodle class
-   4. create the main method to create the ASCII graph and display locations
-   5. initialize the ant's and doodle bugs
-
-   Classes needed and Purpose (Input, Processing, Output)
-   Oganism - parent and holds common functions
-   Ant - specific functions to the ant
-   Map - accessors and mutators for the Map
-   Doodle - specific functions for the doodle bug
-*/
-
 import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 class PredatorPrey
 {
   public static void main(String[] args)
   {
-  	Doodlebug bug1 = new Doodlebug(1,1);
-    BugMap map1 = new BugMap();
-    int x = 0;
-    while(x == 0)
+  	Scanner input = new Scanner(System.in);
+  	System.out.println("Type 'load' to load the last map");
+  	Simulation map1;
+    //see if the user typed load into the console, if not make a new bugmap
+  	String loadMap = input.nextLine();
+  	if(!loadMap.toLowerCase().equals("load"))
+  	{
+  		map1 = new Simulation();
+  	}
+  	else
+  	{
+      //try to load the bugmap from bugMap.dat
+  		try
+  		{
+  			FileInputStream inputStream = new FileInputStream("bugMap.dat");
+      ObjectInputStream ObjInput = new ObjectInputStream(inputStream);
+      map1 = (Simulation) ObjInput.readObject();
+      ObjInput.close();
+  		}
+  		catch(Exception e)
+  		{
+  			System.out.println("couldn't get file, making new map " + e.getMessage());
+  			map1 = new Simulation();
+  		}
+  	}
+
+    //continue looping through the simulation until the user types exit
+    while(true)
     {
-      map1.start();
-      System.out.println("press enter to continue");
-      new Scanner(System.in).nextLine();
+
+      map1.timeStep();
+      map1.printMap();
+      System.out.println("press enter to continue, type exit to end and save");
+      if(input.nextLine().toLowerCase().equals("exit"))
+      {
+      	break;
+      }
     }
+
+    //saves the map as bugMap.dat
+    try
+    {
+      FileOutputStream outputStream = new FileOutputStream("bugMap.dat");
+      ObjectOutputStream output = new ObjectOutputStream(outputStream);
+      output.writeObject(map1);
+      output.close();
+    }
+    catch(FileNotFoundException e) { }
+    catch(IOException e) { }
   }
 }

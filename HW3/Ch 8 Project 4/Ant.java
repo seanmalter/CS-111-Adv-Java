@@ -1,12 +1,15 @@
-public class Ant extends Organism
+import java.io.Serializable;
+
+public class Ant extends Organism implements Serializable
 {
-  Ant(int row, int column){
-    super(row, column);
+  //default constructs an organism
+  Ant(){
+    super();
   }
 
-  //clone method
+  //clone method for Ant
   @Override
-  public Ant clone(int row, int column){
-    return new Ant(row, column);
+  public Ant clone(){
+    return new Ant();
   }
 }

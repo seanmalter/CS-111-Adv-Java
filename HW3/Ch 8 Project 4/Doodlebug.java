@@ -1,59 +1,43 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.io.Serializable;
 
-public class Doodlebug extends Organism
+
+public class Doodlebug extends Organism implements Serializable
 {
+  //starve count keeps track of when the bug starves
   private int starve_count = 0;
 
-  Doodlebug(int x, int y)
+  //default constructor
+  Doodlebug()
   {
-    super(x, y);
-    this.starve_count = 0;
-  }
-
-  Doodlebug(Doodlebug doodle)
-  {
-    super(doodle.getRow(), doodle.getColumn());
+    super();
     this.starve_count = 0;
   }
 
   //accessors and mutators
+  //retrieve starve count
   public int getStarveCount()
   {
     return this.starve_count;
   }
 
+  //increment starve count by 1
   public void incrementStarveCount()
   {
     this.starve_count++;
   }
 
-  public void ateAnt()
+  // reset the starve count to 0
+  public void resetStarveCount()
   {
   	this.starve_count = 0;
   }
 
+  //clone the doodlebug
   @Override
-  public Doodlebug clone(int row, int column)
+  public Doodlebug clone()
   {
-    return new Doodlebug(row, column);
-  }
-
-  @Override
-  public String move(HashMap<String, Organism> neighbors)
-  {
-    Boolean he_ate = false;
-    //first get the hashmap of nearby neighbors
-
-    for(Map.Entry<String, Organism> entry : neighbors.entrySet()) {
-      String key = entry.getKey();
-      Organism value = entry.getValue();
-      if(value instanceof Ant)
-      {
-        he_ate = true;
-        return key;
-      }
-    }
-    return "";
+    return new Doodlebug();
   }
 }
